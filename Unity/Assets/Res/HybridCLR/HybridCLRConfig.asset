@@ -12,4 +12,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639dfa1ee5feeea45b82581992a9e727, type: 3}
   m_Name: HybridCLRConfig
   m_EditorClassIdentifier: 
-  aotAssemblies: []
+  aotAssemblies:
+  - {fileID: 4900000, guid: 520a37adaa21bdc42a9888809c5262af, type: 3}
+  - {fileID: 4900000, guid: 1b7e4ede5fd86944296ab36de966875d, type: 3}
+  - {fileID: 4900000, guid: 415aad517e8ceba489d5f343c924827d, type: 3}
+  - {fileID: 4900000, guid: 186b09d8fd8c3e242b1cdfb9ee8162f1, type: 3}
+  - {fileID: 4900000, guid: 502fc8a95bc2f24429b66fbafd808fa6, type: 3}
+  - {fileID: 4900000, guid: db56175165137de4aaa64341025b7fff, type: 3}
+  - {fileID: 4900000, guid: cb4072bc43e409d4a96a89842a452987, type: 3}
+  - {fileID: 4900000, guid: 9e43f945ce9cae4438f7308073916b53, type: 3}
+  - {fileID: 4900000, guid: 04646acc478ecb64580d4537cf302f7e, type: 3}
+  - {fileID: 4900000, guid: 3d9eaa9252bc90f4e9684fe6b443fc1d, type: 3}
+  - {fileID: 4900000, guid: 5dd6e3404d93cbe4ea5ac72b9a657b5d, type: 3}
+  - {fileID: 4900000, guid: 3d6a064e048d0754fac5dd64e784cd09, type: 3}
+  - {fileID: 4900000, guid: be201fb39c0a83f459ff788b7f00cba6, type: 3}
+  - {fileID: 4900000, guid: 822b3c98e30e214498ff5ae485f67ce9, type: 3}
+  - {fileID: 4900000, guid: 9d03e716165ff014dbb2f2b09566aeb4, type: 3}
+  - {fileID: 4900000, guid: b98d529bb913c9e40b36c37afa53ac64, type: 3}
+  - {fileID: 4900000, guid: 5d3fb8ff02e995d458e20e579f313f36, type: 3}
+  - {fileID: 4900000, guid: ee2ae5e835a106b45b89e8fe4d620b7b, type: 3}
+  - {fileID: 4900000, guid: 25bd6ce5dc0487a4aab851d1b6897241, type: 3}
+  - {fileID: 4900000, guid: c47929b006ed49945987599d39fa179d, type: 3}
+  - {fileID: 4900000, guid: ce5a82ed67be85e419a1c6459209d154, type: 3}
+  - {fileID: 4900000, guid: e24a467cd84f4cd4795b1ad9586dfcb1, type: 3}
+  - {fileID: 4900000, guid: c96ac6e6aa2b991408993b760f6fa86a, type: 3}
+  - {fileID: 4900000, guid: c3119ae2a66357c4297a0f3dcce0c3cf, type: 3}
+  - {fileID: 4900000, guid: 8d718722f3cb3b344a8405179c1893f1, type: 3}
+  - {fileID: 4900000, guid: a137daff613de0649b50637416f9669c, type: 3}
+  - {fileID: 4900000, guid: 71ddaf07b601a6541ba817d483aa269c, type: 3}
+  - {fileID: 4900000, guid: 61d71db169dd0864e877bcf07c8a9b71, type: 3}
+  - {fileID: 4900000, guid: 6ab2bbf6bf0614243add2e3c6b1d04b3, type: 3}
+  - {fileID: 4900000, guid: 7ed28935c56785a439d41debf8880972, type: 3}
+  - {fileID: 4900000, guid: 28a41fbfda48c3845a4e98e30591d942, type: 3}
+  - {fileID: 4900000, guid: 505c57c4e1b40d544895479333e04feb, type: 3}
+  - {fileID: 4900000, guid: 8284e7c0878e3044eaf92bff8f49b27a, type: 3}
+  - {fileID: 4900000, guid: 4adf062f2ed14234db94f5b49944c44e, type: 3}

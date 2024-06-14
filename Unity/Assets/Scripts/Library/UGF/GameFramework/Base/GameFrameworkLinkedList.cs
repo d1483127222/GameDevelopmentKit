@@ -20,7 +20,7 @@ namespace GameFramework
     {
         private readonly LinkedList<T> m_LinkedList;
         private readonly Queue<LinkedListNode<T>> m_CachedNodes;
-
+                
         /// <summary>
         /// 初始化游戏框架链表类的新实例。
         /// </summary>

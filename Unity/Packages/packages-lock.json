@@ -8,11 +8,11 @@
       "hash": "93c7e64d2fa1b8ce1798f0cbce75034f63a45c04"
     },
     "com.code-philosophy.hybridclr": {
-      "version": "https://github.com/focus-creative-games/hybridclr_unity.git",
+      "version": "https://gitee.com/focus-creative-games/hybridclr_unity.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "ef1b78caae7e195498df20b6e4096a8afcb4d06f"
+      "hash": "e5a69527776ca01cf95372c809f522a33d0f9022"
     },
     "com.coffee.softmask-for-ugui": {
       "version": "https://github.com/mob-sakai/SoftMaskForUGUI.git",
@@ -88,14 +88,14 @@
       "dependencies": {
         "com.unity.mathematics": "1.2.1"
       },
-      "url": "https://packages.unity.com"
+      "url": "https://packages.unity.cn"
     },
     "com.unity.editorcoroutines": {
       "version": "1.0.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "https://packages.unity.com"
+      "url": "https://packages.unity.cn"
     },
     "com.unity.editoriterationprofiler": {
       "version": "https://github.com/Unity-Technologies/com.unity.editoriterationprofiler.git",
@@ -109,7 +109,7 @@
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "https://packages.unity.com"
+      "url": "https://packages.unity.cn"
     },
     "com.unity.ide.rider": {
       "version": "3.0.28",
@@ -118,7 +118,7 @@
       "dependencies": {
         "com.unity.ext.nunit": "1.0.6"
       },
-      "url": "https://packages.unity.com"
+      "url": "https://packages.unity.cn"
     },
     "com.unity.ide.visualstudio": {
       "version": "2.0.22",
@@ -127,14 +127,14 @@
       "dependencies": {
         "com.unity.test-framework": "1.1.9"
       },
-      "url": "https://packages.unity.com"
+      "url": "https://packages.unity.cn"
     },
     "com.unity.ide.vscode": {
       "version": "1.2.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
-      "url": "https://packages.unity.com"
+      "url": "https://packages.unity.cn"
     },
     "com.unity.inputsystem": {
       "version": "1.7.0",
@@ -143,14 +143,14 @@
       "dependencies": {
         "com.unity.modules.uielements": "1.0.0"
       },
-      "url": "https://packages.unity.com"
+      "url": "https://packages.unity.cn"
     },
     "com.unity.mathematics": {
       "version": "1.2.6",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
-      "url": "https://packages.unity.com"
+      "url": "https://packages.unity.cn"
     },
     "com.unity.memoryprofiler": {
       "version": "1.1.0",
@@ -159,14 +159,14 @@
       "dependencies": {
         "com.unity.editorcoroutines": "1.0.0"
       },
-      "url": "https://packages.unity.com"
+      "url": "https://packages.unity.cn"
     },
     "com.unity.nuget.newtonsoft-json": {
       "version": "3.2.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
-      "url": "https://packages.unity.com"
+      "url": "https://packages.unity.cn"
     },
     "com.unity.render-pipelines.core": {
       "version": "14.0.9",
@@ -204,7 +204,7 @@
       "depth": 0,
       "source": "registry",
       "dependencies": {},
-      "url": "https://packages.unity.com"
+      "url": "https://packages.unity.cn"
     },
     "com.unity.shadergraph": {
       "version": "14.0.9",
@@ -224,7 +224,7 @@
         "com.unity.modules.imgui": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
       },
-      "url": "https://packages.unity.com"
+      "url": "https://packages.unity.cn"
     },
     "com.unity.textmeshpro": {
       "version": "3.0.9",
@@ -233,7 +233,7 @@
       "dependencies": {
         "com.unity.ugui": "1.0.0"
       },
-      "url": "https://packages.unity.com"
+      "url": "https://packages.unity.cn"
     },
     "com.unity.ugui": {
       "version": "1.0.0",
