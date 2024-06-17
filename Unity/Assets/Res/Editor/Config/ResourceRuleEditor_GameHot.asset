@@ -95,11 +95,11 @@ MonoBehaviour:
     filterType: 1
     searchPatterns: '*.unity'
   - valid: 1
-    name: Localization.ChineseSimplified
+    name: Localization
     variant: 
     fileSystem: 
     groups: 
-    assetsDirectoryPath: Assets/Res/Localization/ChineseSimplified
+    assetsDirectoryPath: Assets/Res/Localization
     loadType: 0
     packed: 0
     filterType: 1

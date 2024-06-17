@@ -24,6 +24,9 @@
       <Resource Name="Res/Entity/PlayerShip" LoadType="0" Packed="False" />
       <Resource Name="Res/Font/Default" LoadType="0" Packed="False" />
       <Resource Name="Res/Localization/ChineseSimplified/Localization" LoadType="0" Packed="False" />
+      <Resource Name="Res/Localization/ChineseTraditional/Localization" LoadType="0" Packed="False" />
+      <Resource Name="Res/Localization/English/Localization" LoadType="0" Packed="False" />
+      <Resource Name="Res/Localization/Korean/Localization" LoadType="0" Packed="False" />
       <Resource Name="Res/Material/done_fx_bolt_cyan_mat" LoadType="0" Packed="False" />
       <Resource Name="Res/Material/done_fx_bolt_orange_mat" LoadType="0" Packed="False" />
       <Resource Name="Res/Material/done_tile_nebula_green_dff" LoadType="0" Packed="False" />
@@ -122,6 +125,7 @@
       <Asset Guid="236433a27ce40a7429b87d14d8fa3035" ResourceName="Res/UI/UISprite/Common" />
       <Asset Guid="24ca310f92a6796408f1db7647ec4e55" ResourceName="Res/UI/UISprite/Common" />
       <Asset Guid="24ceddd13de2037439f8f856dd8d2811" ResourceName="UI.UXTool" />
+      <Asset Guid="25619d90ce6d6724db8154b48c144403" ResourceName="Res/Localization/ChineseTraditional/Localization" />
       <Asset Guid="2768a9a4c8d289840918dcb879705893" ResourceName="Res/Mesh/prop_asteroid_03" />
       <Asset Guid="2a2ffdccc4fac024e94d5fe57c2b78c4" ResourceName="UI.UXTool" />
       <Asset Guid="2b85caab422d3b44698e732df0d97c4b" ResourceName="UI.UXTool" />
@@ -170,6 +174,7 @@
       <Asset Guid="63fe6ff9ab9e1433f8db4ebd940f2442" ResourceName="Res/Material/done_fx_bolt_cyan_mat" />
       <Asset Guid="654c33b0a4496454481a16682b4046ac" ResourceName="Res/UI/UIPrefab/HPBarInstances" />
       <Asset Guid="663e8d9c4af162a42b0291d124f08e23" ResourceName="UI.UXTool" />
+      <Asset Guid="667ce59325f540a43bace79736e2287e" ResourceName="Res/Localization/Korean/Localization" />
       <Asset Guid="6a20488bc1db41d47bf65a05117a877d" ResourceName="UI.UXTool" />
       <Asset Guid="6bb61da7c155dbe4c8ea5214984f07c6" ResourceName="UI.UXTool" />
       <Asset Guid="6cbc2c323b77f804fb958fa4eca33998" ResourceName="Res/UI/UISprite/Common" />
@@ -264,6 +269,7 @@
       <Asset Guid="caa829ab2ffc71340a69253afdf58365" ResourceName="Res/Music/music_menu" />
       <Asset Guid="cadd0764941c8b646ae79b51d0ea8285" ResourceName="Res/UI/UISprite/Common" />
       <Asset Guid="cd590f301d3662040841baada9b1dfb4" ResourceName="Luban" />
+      <Asset Guid="d21cca8dd0073ab4584cd5ff462371ee" ResourceName="Res/Localization/English/Localization" />
       <Asset Guid="d2f2e5ce2a6eb6242a0378d368a023d1" ResourceName="UI.UXTool" />
       <Asset Guid="d339ecdfaaab7004f8f057a91e014080" ResourceName="UI.UXTool" />
       <Asset Guid="d4c4df527d8b7184b94a679bdec19898" ResourceName="UI.UXTool" />
