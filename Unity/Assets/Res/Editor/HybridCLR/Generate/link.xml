@@ -10,18 +10,18 @@
     <type fullname="Game.DTScene" preserve="all" />
     <type fullname="Game.EntityExtension" preserve="all" />
     <type fullname="Game.GameEntry" preserve="all" />
+    <type fullname="Game.ProcedureBase" preserve="all" />
     <type fullname="Game.SoundExtension" preserve="all" />
     <type fullname="Game.TablesComponent" preserve="all" />
     <type fullname="Game.UGuiExtension" preserve="all" />
     <type fullname="Game.UIExtension" preserve="all" />
   </assembly>
   <assembly fullname="Game.Hot.Loader">
-    <type fullname="Game.CSPacketBase" preserve="all" />
     <type fullname="Game.Hot.AHotUIForm" preserve="all" />
     <type fullname="Game.Hot.GameHot" preserve="all" />
-    <type fullname="Game.SCPacketBase" preserve="all" />
   </assembly>
   <assembly fullname="GameFramework">
+    <type fullname="GameFramework.BaseEventArgs" preserve="all" />
     <type fullname="GameFramework.Event.GameEventArgs" preserve="all" />
     <type fullname="GameFramework.Fsm.FsmState`1" preserve="all" />
     <type fullname="GameFramework.Fsm.IFsmManager" preserve="all" />
@@ -33,7 +33,15 @@
     <type fullname="GameFramework.GameFrameworkLinkedList`1/Enumerator" preserve="all" />
     <type fullname="GameFramework.GameFrameworkLog" preserve="all" />
     <type fullname="GameFramework.GameFrameworkLog/ILogHelper" preserve="all" />
+    <type fullname="GameFramework.IReference" preserve="all" />
     <type fullname="GameFramework.Localization.Language" preserve="all" />
+    <type fullname="GameFramework.Network.INetworkChannel" preserve="all" />
+    <type fullname="GameFramework.Network.INetworkChannelHelper" preserve="all" />
+    <type fullname="GameFramework.Network.IPacketHandler" preserve="all" />
+    <type fullname="GameFramework.Network.IPacketHeader" preserve="all" />
+    <type fullname="GameFramework.Network.NetworkErrorCode" preserve="all" />
+    <type fullname="GameFramework.Network.Packet" preserve="all" />
+    <type fullname="GameFramework.Network.ServiceType" preserve="all" />
     <type fullname="GameFramework.ObjectPool.IObjectPool`1" preserve="all" />
     <type fullname="GameFramework.ObjectPool.ObjectBase" preserve="all" />
     <type fullname="GameFramework.ReferencePool" preserve="all" />
@@ -57,6 +65,13 @@
     <type fullname="System.Collections.Generic.LinkedListNode`1" preserve="all" />
     <type fullname="System.ComponentModel.EditorBrowsableAttribute" preserve="all" />
     <type fullname="System.ComponentModel.EditorBrowsableState" preserve="all" />
+    <type fullname="System.Net.EndPoint" preserve="all" />
+    <type fullname="System.Net.IPAddress" preserve="all" />
+    <type fullname="System.Net.IPEndPoint" preserve="all" />
+    <type fullname="System.Net.Sockets.AddressFamily" preserve="all" />
+    <type fullname="System.Net.Sockets.ProtocolType" preserve="all" />
+    <type fullname="System.Net.Sockets.Socket" preserve="all" />
+    <type fullname="System.Net.Sockets.SocketType" preserve="all" />
   </assembly>
   <assembly fullname="UniTask">
     <type fullname="Cysharp.Threading.Tasks.CompilerServices.AsyncUniTaskMethodBuilder" preserve="all" />
@@ -145,6 +160,12 @@
     <type fullname="UnityGameFramework.Runtime.LoadSceneUpdateEventArgs" preserve="all" />
     <type fullname="UnityGameFramework.Runtime.LocalizationComponent" preserve="all" />
     <type fullname="UnityGameFramework.Runtime.Log" preserve="all" />
+    <type fullname="UnityGameFramework.Runtime.NetworkClosedEventArgs" preserve="all" />
+    <type fullname="UnityGameFramework.Runtime.NetworkComponent" preserve="all" />
+    <type fullname="UnityGameFramework.Runtime.NetworkConnectedEventArgs" preserve="all" />
+    <type fullname="UnityGameFramework.Runtime.NetworkCustomErrorEventArgs" preserve="all" />
+    <type fullname="UnityGameFramework.Runtime.NetworkErrorEventArgs" preserve="all" />
+    <type fullname="UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs" preserve="all" />
     <type fullname="UnityGameFramework.Runtime.ObjectPoolComponent" preserve="all" />
     <type fullname="UnityGameFramework.Runtime.OpenUIFormSuccessEventArgs" preserve="all" />
     <type fullname="UnityGameFramework.Runtime.ResourceComponent" preserve="all" />
@@ -183,6 +204,8 @@
     <type fullname="System.Func`1" preserve="all" />
     <type fullname="System.Func`2" preserve="all" />
     <type fullname="System.IDisposable" preserve="all" />
+    <type fullname="System.IO.MemoryStream" preserve="all" />
+    <type fullname="System.IO.Stream" preserve="all" />
     <type fullname="System.Int32" preserve="all" />
     <type fullname="System.Math" preserve="all" />
     <type fullname="System.NotSupportedException" preserve="all" />
@@ -190,6 +213,7 @@
     <type fullname="System.Object" preserve="all" />
     <type fullname="System.Reflection.Assembly" preserve="all" />
     <type fullname="System.Reflection.DefaultMemberAttribute" preserve="all" />
+    <type fullname="System.Reflection.MemberInfo" preserve="all" />
     <type fullname="System.Reflection.MethodBase" preserve="all" />
     <type fullname="System.Reflection.MethodInfo" preserve="all" />
     <type fullname="System.Reflection.ParameterInfo" preserve="all" />
@@ -206,11 +230,21 @@
     <type fullname="System.Single" preserve="all" />
     <type fullname="System.String" preserve="all" />
     <type fullname="System.Threading.CancellationToken" preserve="all" />
+    <type fullname="System.Threading.ParameterizedThreadStart" preserve="all" />
+    <type fullname="System.Threading.Thread" preserve="all" />
+    <type fullname="System.Threading.ThreadStart" preserve="all" />
     <type fullname="System.Type" preserve="all" />
     <type fullname="System.ValueType" preserve="all" />
   </assembly>
   <assembly fullname="protobuf-net">
+    <type fullname="ProtoBuf.Extensible" preserve="all" />
+    <type fullname="ProtoBuf.IExtensible" preserve="all" />
+    <type fullname="ProtoBuf.IExtension" preserve="all" />
+    <type fullname="ProtoBuf.Meta.RuntimeTypeModel" preserve="all" />
+    <type fullname="ProtoBuf.Meta.TypeModel" preserve="all" />
+    <type fullname="ProtoBuf.PrefixStyle" preserve="all" />
     <type fullname="ProtoBuf.ProtoContractAttribute" preserve="all" />
     <type fullname="ProtoBuf.ProtoMemberAttribute" preserve="all" />
+    <type fullname="ProtoBuf.Serializer" preserve="all" />
   </assembly>
 </linker>

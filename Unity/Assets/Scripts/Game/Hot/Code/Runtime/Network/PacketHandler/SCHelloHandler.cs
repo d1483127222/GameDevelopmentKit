@@ -24,7 +24,7 @@ namespace Game.Hot
         {
             SCHello packetImpl = (SCHello)packet;
             
-            Log.Info("Receive packet '{0}'.", packetImpl.Name.ToString());
+            Log.Info("Receive ss packet '{0}'.", packetImpl.Name.ToString());
         }
     }
 }

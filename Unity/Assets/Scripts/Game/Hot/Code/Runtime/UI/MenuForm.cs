@@ -33,12 +33,15 @@ namespace Game.Hot
 
         public void OnSettingButtonClick()
         {
+            Log.Debug("测试二");
             //GameEntry.UI.OpenUIForm(UIFormId.SettingForm);
             //m_Channel.Send(ReferencePool.Acquire<CSHeartBeat>());
             // 发送消息给服务端
             m_Channel.Send (new CSHello () {
                 Name = "服务器你好吗？",
             });
+            
+            
         }
 
         public void OnAboutButtonClick()

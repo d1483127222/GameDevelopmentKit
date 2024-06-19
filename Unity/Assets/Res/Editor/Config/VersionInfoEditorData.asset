@@ -19,14 +19,14 @@ MonoBehaviour:
     m_Value:
       m_ForceUpdateGame: 0
       m_LatestGameVersion: 1.0
-      m_InternalGameVersion: 18
+      m_InternalGameVersion: 26
       m_ServerPath: 127.0.0.1:8088
-      m_ResourceVersion: 1_0_20
+      m_ResourceVersion: 1_0_29
       m_Platform: 2
       m_VersionListLength: 19231
-      m_InternalResourceVersion: 20
-      m_VersionListHashCode: 239529172
+      m_InternalResourceVersion: 29
+      m_VersionListHashCode: -276418985
       m_VersionListCompressedLength: 5655
-      m_VersionListCompressedHashCode: 861913983
+      m_VersionListCompressedHashCode: 847334246
   m_IsGenerateToFullPath: 1
   m_OutPath: 

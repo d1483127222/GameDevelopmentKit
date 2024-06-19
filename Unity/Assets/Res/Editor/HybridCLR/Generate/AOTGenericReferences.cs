@@ -13,6 +13,7 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		"UnityGameFramework.Extension.dll",
 		"UnityGameFramework.Runtime.dll",
 		"mscorlib.dll",
+		"protobuf-net.dll",
 	};
 	// }}
 
@@ -521,20 +522,28 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// System.Void GameFramework.GameFrameworkLog.Error<object,object>(string,object,object)
 		// System.Void GameFramework.GameFrameworkLog.Error<object>(string,object)
 		// System.Void GameFramework.GameFrameworkLog.Info<object,object,object,object>(string,object,object,object,object)
+		// System.Void GameFramework.GameFrameworkLog.Info<object,object,object>(string,object,object,object)
 		// System.Void GameFramework.GameFrameworkLog.Info<object,object>(string,object,object)
 		// System.Void GameFramework.GameFrameworkLog.Info<object>(string,object)
+		// System.Void GameFramework.GameFrameworkLog.Warning<object,object,object>(string,object,object,object)
 		// System.Void GameFramework.GameFrameworkLog.Warning<object,object>(string,object,object)
 		// System.Void GameFramework.GameFrameworkLog.Warning<object>(string,object)
 		// GameFramework.ObjectPool.IObjectPool<object> GameFramework.ObjectPool.IObjectPoolManager.CreateSingleSpawnObjectPool<object>(string,int)
 		// string GameFramework.Utility.Text.Format<int>(string,int)
 		// string GameFramework.Utility.Text.Format<object,object,object,object>(string,object,object,object,object)
+		// string GameFramework.Utility.Text.Format<object,object,object>(string,object,object,object)
 		// string GameFramework.Utility.Text.Format<object,object>(string,object,object)
 		// string GameFramework.Utility.Text.Format<object>(string,object)
 		// string GameFramework.Utility.Text.ITextHelper.Format<int>(string,int)
 		// string GameFramework.Utility.Text.ITextHelper.Format<object,object,object,object>(string,object,object,object,object)
+		// string GameFramework.Utility.Text.ITextHelper.Format<object,object,object>(string,object,object,object)
 		// string GameFramework.Utility.Text.ITextHelper.Format<object,object>(string,object,object)
 		// string GameFramework.Utility.Text.ITextHelper.Format<object>(string,object)
 		// string Luban.StringUtil.CollectionToString<int>(System.Collections.Generic.IEnumerable<int>)
+		// object ProtoBuf.Serializer.DeserializeWithLengthPrefix<object>(System.IO.Stream,ProtoBuf.PrefixStyle)
+		// object ProtoBuf.Serializer.DeserializeWithLengthPrefix<object>(System.IO.Stream,ProtoBuf.PrefixStyle,int)
+		// System.Void ProtoBuf.Serializer.SerializeWithLengthPrefix<object>(System.IO.Stream,object,ProtoBuf.PrefixStyle)
+		// System.Void ProtoBuf.Serializer.SerializeWithLengthPrefix<object>(System.IO.Stream,object,ProtoBuf.PrefixStyle,int)
 		// object System.Activator.CreateInstance<object>()
 		// object UnityEngine.Component.GetComponent<object>()
 		// object UnityEngine.Component.GetComponentInParent<object>()
@@ -549,11 +558,14 @@ public class AOTGenericReferences : UnityEngine.MonoBehaviour
 		// object UnityExtension.GetOrAddComponent<object>(UnityEngine.GameObject)
 		// Cysharp.Threading.Tasks.UniTask<object> UnityGameFramework.Extension.Awaitable.LoadAssetAsync<object>(UnityGameFramework.Runtime.ResourceComponent,string,int,System.Threading.CancellationToken,System.Action<float>,System.Action<string>)
 		// Cysharp.Threading.Tasks.UniTask<object> UnityGameFramework.Extension.Awaitable.NewUniTask<object>(UnityGameFramework.Extension.Awaitable.MoveNextFunc<object>,System.Threading.CancellationToken,System.Action)
+		// object UnityGameFramework.Runtime.GameEntry.GetComponent<object>()
 		// System.Void UnityGameFramework.Runtime.Log.Error<object,object>(string,object,object)
 		// System.Void UnityGameFramework.Runtime.Log.Error<object>(string,object)
 		// System.Void UnityGameFramework.Runtime.Log.Info<object,object,object,object>(string,object,object,object,object)
+		// System.Void UnityGameFramework.Runtime.Log.Info<object,object,object>(string,object,object,object)
 		// System.Void UnityGameFramework.Runtime.Log.Info<object,object>(string,object,object)
 		// System.Void UnityGameFramework.Runtime.Log.Info<object>(string,object)
+		// System.Void UnityGameFramework.Runtime.Log.Warning<object,object,object>(string,object,object,object)
 		// System.Void UnityGameFramework.Runtime.Log.Warning<object,object>(string,object,object)
 		// System.Void UnityGameFramework.Runtime.Log.Warning<object>(string,object)
 		// GameFramework.ObjectPool.IObjectPool<object> UnityGameFramework.Runtime.ObjectPoolComponent.CreateSingleSpawnObjectPool<object>(string,int)
