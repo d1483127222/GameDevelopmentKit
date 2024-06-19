@@ -5,24 +5,26 @@
 // Feedback: mailto:ellan@gameframework.cn
 //------------------------------------------------------------
 
-using ProtoBuf;
-using System;
+using GameFramework.Network;
+using UnityGameFramework.Runtime;
 
-namespace Game
+namespace Game.Hot
 {
-    [Serializable, ProtoContract(Name = @"SCHeartBeat")]
-    public class SCHeartBeat : SCPacketBase
+    public class SCHelloHandler : PacketHandlerBase
     {
         public override int Id
         {
             get
             {
-                return 2;
+                return 4;
             }
         }
 
-        public override void Clear()
+        public override void Handle(object sender, Packet packet)
         {
+            SCHello packetImpl = (SCHello)packet;
+            
+            Log.Info("Receive packet '{0}'.", packetImpl.Name.ToString());
         }
     }
 }

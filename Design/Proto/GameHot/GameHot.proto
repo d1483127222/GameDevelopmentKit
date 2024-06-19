@@ -12,3 +12,16 @@ message SCHeartBeatTest
 {
 	repeated int32 A = 1;
 }
+
+/// 自己测试
+message CSHello
+{
+	
+	string Name = 1; // 测试B
+	
+}
+
+message SCHello
+{
+	string Name = 1; // 测试B
+}

@@ -1,14 +1,8 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
-using GameFramework;
+﻿using GameFramework;
 using GameFramework.Network;
+using ProtoBuf;
 
-namespace Game
+namespace Game.Hot
 {
     public abstract class PacketHeaderBase : IPacketHeader, IReference
     {
@@ -17,13 +11,15 @@ namespace Game
             get;
         }
 
-        public int Id
+        /* 注意,abstract是木头加上的,为的是能在子类中重写并加上ProtoMember特性,以便可以使用protobuf序列化 */
+        public abstract int Id
         {
             get;
             set;
         }
 
-        public int PacketLength
+        /* 注意,abstract是木头加上的,为的是能在子类中重写并加上ProtoMember特性,以便可以使用protobuf序列化 */
+        public abstract int PacketLength
         {
             get;
             set;

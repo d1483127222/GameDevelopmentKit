@@ -9,11 +9,11 @@ namespace Game.Hot
     /// <summary>
     /// 心跳测试
     /// </summary>
-    // protofile : UGF/GameHot.proto
+    // protofile : GameHot/GameHot.proto
     [Serializable, ProtoContract(Name = @"CSHeartBeatTest")]
     public partial class CSHeartBeatTest : CSPacketBase
     {
-        public override int Id => 30001;
+        public override int Id => 1;
         /// <summary>
         /// 测试A
         /// </summary>
@@ -34,11 +34,11 @@ namespace Game.Hot
         }
     }
 
-    // protofile : UGF/GameHot.proto
+    // protofile : GameHot/GameHot.proto
     [Serializable, ProtoContract(Name = @"SCHeartBeatTest")]
     public partial class SCHeartBeatTest : SCPacketBase
     {
-        public override int Id => 30002;
+        public override int Id => 2;
         [ProtoMember(1)]
         public List<int> A { get; set; } = new List<int>();
         public override void Clear()
@@ -47,29 +47,38 @@ namespace Game.Hot
         }
     }
 
-    // protofile : UGF/GameHot2.proto
-    [Serializable, ProtoContract(Name = @"CSHeartBeatTest22")]
-    public partial class CSHeartBeatTest22 : CSPacketBase
+    /// <summary>
+    /// 自己测试
+    /// </summary>
+    // protofile : GameHot/GameHot.proto
+    [Serializable, ProtoContract(Name = @"CSHello")]
+    public partial class CSHello : CSPacketBase
     {
-        public override int Id => 30003;
+        public override int Id => 3;
+        /// <summary>
+        /// 测试B
+        /// </summary>
         [ProtoMember(1)]
-        public List<int> A { get; set; } = new List<int>();
+        public string Name { get; set; }
         public override void Clear()
         {
-            this.A.Clear();
+            this.Name = default;
         }
     }
 
-    // protofile : UGF/GameHot2.proto
-    [Serializable, ProtoContract(Name = @"SCHeartBeatTest22")]
-    public partial class SCHeartBeatTest22 : SCPacketBase
+    // protofile : GameHot/GameHot.proto
+    [Serializable, ProtoContract(Name = @"SCHello")]
+    public partial class SCHello : SCPacketBase
     {
-        public override int Id => 30004;
+        public override int Id => 4;
+        /// <summary>
+        /// 测试B
+        /// </summary>
         [ProtoMember(1)]
-        public List<int> A { get; set; } = new List<int>();
+        public string Name { get; set; }
         public override void Clear()
         {
-            this.A.Clear();
+            this.Name = default;
         }
     }
 

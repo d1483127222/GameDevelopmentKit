@@ -1,27 +1,19 @@
-﻿//------------------------------------------------------------
-// Game Framework
-// Copyright © 2013-2021 Jiang Yin. All rights reserved.
-// Homepage: https://gameframework.cn/
-// Feedback: mailto:ellan@gameframework.cn
-//------------------------------------------------------------
-
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using GameFramework;
 using GameFramework.Event;
 using GameFramework.Network;
 using ProtoBuf;
 using ProtoBuf.Meta;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 using UnityGameFramework.Runtime;
 
-namespace Game
+namespace Game.Hot
 {
     public class NetworkChannelHelper : INetworkChannelHelper
     {
         private readonly Dictionary<int, Type> m_ServerToClientPacketTypes = new Dictionary<int, Type>();
-        private readonly MemoryStream m_CachedStream = new MemoryStream(1024 * 8);
         private INetworkChannel m_NetworkChannel = null;
 
         /// <summary>
@@ -31,7 +23,7 @@ namespace Game
         {
             get
             {
-                return sizeof(int);
+                return 8;
             }
         }
 
@@ -39,7 +31,7 @@ namespace Game
         /// 初始化网络频道辅助器。
         /// </summary>
         /// <param name="networkChannel">网络频道。</param>
-        public void Initialize(INetworkChannel networkChannel)
+        public void Initialize (INetworkChannel networkChannel)
         {
             m_NetworkChannel = networkChannel;
 
@@ -74,43 +66,47 @@ namespace Game
                 }
             }
 
-            GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkConnectedEventArgs.EventId, OnNetworkConnected);
-            GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkClosedEventArgs.EventId, OnNetworkClosed);
-            GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs.EventId, OnNetworkMissHeartBeat);
-            GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkErrorEventArgs.EventId, OnNetworkError);
-            GameEntry.Event.Subscribe(UnityGameFramework.Runtime.NetworkCustomErrorEventArgs.EventId, OnNetworkCustomError);
+            // 获取框架事件组件
+            EventComponent Event
+                = UnityGameFramework.Runtime.GameEntry.GetComponent<EventComponent>();
+
+            Event.Subscribe(UnityGameFramework.Runtime.NetworkConnectedEventArgs.EventId, OnNetworkConnected);
+            Event.Subscribe(UnityGameFramework.Runtime.NetworkClosedEventArgs.EventId, OnNetworkClosed);
+            Event.Subscribe(UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs.EventId, OnNetworkMissHeartBeat);
+            Event.Subscribe(UnityGameFramework.Runtime.NetworkErrorEventArgs.EventId, OnNetworkError);
+            Event.Subscribe(UnityGameFramework.Runtime.NetworkCustomErrorEventArgs.EventId, OnNetworkCustomError);
         }
 
         /// <summary>
         /// 关闭并清理网络频道辅助器。
         /// </summary>
-        public void Shutdown()
+        public void Shutdown ()
         {
-            GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkConnectedEventArgs.EventId, OnNetworkConnected);
-            GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkClosedEventArgs.EventId, OnNetworkClosed);
-            GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs.EventId, OnNetworkMissHeartBeat);
-            GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkErrorEventArgs.EventId, OnNetworkError);
-            GameEntry.Event.Unsubscribe(UnityGameFramework.Runtime.NetworkCustomErrorEventArgs.EventId, OnNetworkCustomError);
+            // 获取框架事件组件
+            EventComponent Event
+                = UnityGameFramework.Runtime.GameEntry.GetComponent<EventComponent>();
+
+            Event.Unsubscribe(UnityGameFramework.Runtime.NetworkConnectedEventArgs.EventId, OnNetworkConnected);
+            Event.Unsubscribe(UnityGameFramework.Runtime.NetworkClosedEventArgs.EventId, OnNetworkClosed);
+            Event.Unsubscribe(UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs.EventId, OnNetworkMissHeartBeat);
+            Event.Unsubscribe(UnityGameFramework.Runtime.NetworkErrorEventArgs.EventId, OnNetworkError);
+            Event.Unsubscribe(UnityGameFramework.Runtime.NetworkCustomErrorEventArgs.EventId, OnNetworkCustomError);
 
             m_NetworkChannel = null;
         }
 
-        /// <summary>
-        /// 准备进行连接。
-        /// </summary>
         public void PrepareForConnecting()
         {
-            m_NetworkChannel.Socket.ReceiveBufferSize = 1024 * 64;
-            m_NetworkChannel.Socket.SendBufferSize = 1024 * 64;
+            Log.Debug("准备进行连接");
+            //throw new NotImplementedException();
         }
 
         /// <summary>
         /// 发送心跳消息包。
         /// </summary>
         /// <returns>是否发送心跳消息包成功。</returns>
-        public bool SendHeartBeat()
+        public bool SendHeartBeat ()
         {
-            m_NetworkChannel.Send(ReferencePool.Acquire<CSHeartBeat>());
             return true;
         }
 
@@ -119,9 +115,7 @@ namespace Game
         /// </summary>
         /// <typeparam name="T">消息包类型。</typeparam>
         /// <param name="packet">要序列化的消息包。</param>
-        /// <param name="destination">要序列化的目标流。</param>
-        /// <returns>是否序列化成功。</returns>
-        public bool Serialize<T>(T packet, Stream destination) where T : Packet
+        public bool Serialize<T> (T packet, Stream destination) where T : Packet
         {
             PacketBase packetImpl = packet as PacketBase;
             if (packetImpl == null)
@@ -136,31 +130,37 @@ namespace Game
                 return false;
             }
 
-            m_CachedStream.SetLength(m_CachedStream.Capacity); // 此行防止 Array.Copy 的数据无法写入
-            m_CachedStream.Position = 0L;
+            /* 以下内容为木头本人做的改动,不知道是否有错误的地方(虽然它运行起来是正确的),希望大家能帮忙指正 */
+            // 因为头部消息有8字节长度，所以先跳过8字节
+            destination.Position = 8;
+            Serializer.SerializeWithLengthPrefix(destination, packet, PrefixStyle.Fixed32);
 
+            // 头部消息
             CSPacketHeader packetHeader = ReferencePool.Acquire<CSPacketHeader>();
-            Serializer.Serialize(m_CachedStream, packetHeader);
+            packetHeader.Id = packet.Id;
+            packetHeader.PacketLength = (int)destination.Length - 8; // 消息内容长度需要减去头部消息长度
+
+            destination.Position = 0;
+            Serializer.SerializeWithLengthPrefix(destination, packetHeader, PrefixStyle.Fixed32);
+
             ReferencePool.Release(packetHeader);
 
-            Serializer.SerializeWithLengthPrefix(m_CachedStream, packet, PrefixStyle.Fixed32);
-            ReferencePool.Release((IReference)packet);
-
-            m_CachedStream.WriteTo(destination);
             return true;
         }
 
         /// <summary>
-        /// 反序列化消息包头。
+        /// 反序列消息包头。
         /// </summary>
         /// <param name="source">要反序列化的来源流。</param>
         /// <param name="customErrorData">用户自定义错误数据。</param>
-        /// <returns>反序列化后的消息包头。</returns>
-        public IPacketHeader DeserializePacketHeader(Stream source, out object customErrorData)
+        /// <returns></returns>
+        public IPacketHeader DeserializePacketHeader (Stream source, out object customErrorData)
         {
             // 注意：此函数并不在主线程调用！
             customErrorData = null;
-            return (IPacketHeader)RuntimeTypeModel.Default.Deserialize(source, ReferencePool.Acquire<SCPacketHeader>(), typeof(SCPacketHeader));
+
+            return Serializer.DeserializeWithLengthPrefix<SCPacketHeader>(source, PrefixStyle.Fixed32);
+            // return (IPacketHeader)RuntimeTypeModel.Default.Deserialize(source, ReferencePool.Acquire<SCPacketHeader>(), typeof(SCPacketHeader));
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Game
         /// <param name="source">要反序列化的来源流。</param>
         /// <param name="customErrorData">用户自定义错误数据。</param>
         /// <returns>反序列化后的消息包。</returns>
-        public Packet DeserializePacket(IPacketHeader packetHeader, Stream source, out object customErrorData)
+        public Packet DeserializePacket (IPacketHeader packetHeader, Stream source, out object customErrorData)
         {
             // 注意：此函数并不在主线程调用！
             customErrorData = null;
@@ -188,7 +188,8 @@ namespace Game
                 Type packetType = GetServerToClientPacketType(scPacketHeader.Id);
                 if (packetType != null)
                 {
-                    packet = (Packet)RuntimeTypeModel.Default.DeserializeWithLengthPrefix(source, ReferencePool.Acquire(packetType), packetType, PrefixStyle.Fixed32, 0);
+                    packet = (Packet)RuntimeTypeModel.Default.DeserializeWithLengthPrefix(
+                        source, ReferencePool.Acquire(packetType), packetType, PrefixStyle.Fixed32, 0);
                 }
                 else
                 {
@@ -201,10 +202,11 @@ namespace Game
             }
 
             ReferencePool.Release(scPacketHeader);
+
             return packet;
         }
 
-        private Type GetServerToClientPacketType(int id)
+        private Type GetServerToClientPacketType (int id)
         {
             Type type = null;
             if (m_ServerToClientPacketTypes.TryGetValue(id, out type))
@@ -215,7 +217,7 @@ namespace Game
             return null;
         }
 
-        private void OnNetworkConnected(object sender, GameEventArgs e)
+        private void OnNetworkConnected (object sender, GameEventArgs e)
         {
             UnityGameFramework.Runtime.NetworkConnectedEventArgs ne = (UnityGameFramework.Runtime.NetworkConnectedEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
@@ -223,10 +225,10 @@ namespace Game
                 return;
             }
 
-            Log.Info("Network channel '{0}' connected, local address '{1}', remote address '{2}'.", ne.NetworkChannel.Name, ne.NetworkChannel.Socket.LocalEndPoint.ToString(), ne.NetworkChannel.Socket.RemoteEndPoint.ToString());
+            Log.Info("Network channel '{0}' connected.", ne.NetworkChannel.Name);
         }
 
-        private void OnNetworkClosed(object sender, GameEventArgs e)
+        private void OnNetworkClosed (object sender, GameEventArgs e)
         {
             UnityGameFramework.Runtime.NetworkClosedEventArgs ne = (UnityGameFramework.Runtime.NetworkClosedEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
@@ -237,7 +239,7 @@ namespace Game
             Log.Info("Network channel '{0}' closed.", ne.NetworkChannel.Name);
         }
 
-        private void OnNetworkMissHeartBeat(object sender, GameEventArgs e)
+        private void OnNetworkMissHeartBeat (object sender, GameEventArgs e)
         {
             UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs ne = (UnityGameFramework.Runtime.NetworkMissHeartBeatEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
@@ -255,7 +257,7 @@ namespace Game
             ne.NetworkChannel.Close();
         }
 
-        private void OnNetworkError(object sender, GameEventArgs e)
+        private void OnNetworkError (object sender, GameEventArgs e)
         {
             UnityGameFramework.Runtime.NetworkErrorEventArgs ne = (UnityGameFramework.Runtime.NetworkErrorEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
@@ -268,7 +270,7 @@ namespace Game
             ne.NetworkChannel.Close();
         }
 
-        private void OnNetworkCustomError(object sender, GameEventArgs e)
+        private void OnNetworkCustomError (object sender, GameEventArgs e)
         {
             UnityGameFramework.Runtime.NetworkCustomErrorEventArgs ne = (UnityGameFramework.Runtime.NetworkCustomErrorEventArgs)e;
             if (ne.NetworkChannel != m_NetworkChannel)
