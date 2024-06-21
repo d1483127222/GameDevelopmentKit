@@ -58,5 +58,10 @@ namespace Game.Hot
         /// 关于。
         /// </summary>
         public const int AboutForm = 102;
+
+        /// <summary>
+        /// 测试。
+        /// </summary>
+        public const int TestForm = 103;
     }
 }
